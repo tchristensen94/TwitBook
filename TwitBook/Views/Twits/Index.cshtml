@@ -1,0 +1,34 @@
+﻿@model IEnumerable<TwitBook.Models.Twit>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.message) by 
+            
+            @Html.DisplayFor(modelItem => item.date)
+        </td>
+        <td>
+            @if (item.User.UserName == User.Identity.Name) {
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID })
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            }
+            
+             
+
+            
+        </td>
+    </tr>
+}
+
+</table>
